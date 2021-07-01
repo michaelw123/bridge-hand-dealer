@@ -2,11 +2,8 @@ import core.OpenBid._
 import core.{Board, Deck, EmptyPredicate, Hand, PointsGreaterAndEqThanPredicate, PointsLessThanAndEqualPredicate, Shuffle}
 
 object test extends App {
-  
-//  println(Deck.cards.map(_.points).sum)
-//
-//  val (north, east, south, west) = Shuffle.shuffle(Deck.cards)
-//
+
+
 //  north.foreach(print)
 //  println
 ////  east.foreach(print)
