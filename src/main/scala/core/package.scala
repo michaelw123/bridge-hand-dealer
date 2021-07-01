@@ -79,27 +79,21 @@ package object core {
     override def ranking:Int = 2
   }
 
-   trait Card extends Suit with Rank {
-      //val suit:  Suit with Singleton
-      //val rank: Rank with Singleton
-      //def points:Int = rank.points
-      //def name = suit.name+rank.name
-  }
+  trait Card extends Suit with Rank
   sealed trait SpadeCard extends Card with SpadeSuit
-
-    case object SA extends SpadeCard with Ace
-    case object SK extends SpadeCard with King
-    case object SQ extends SpadeCard with Queen
-    case object SJ extends SpadeCard with Jack
-    case object ST extends SpadeCard with Ten
-    case object S9 extends SpadeCard with Nine
-    case object S8 extends SpadeCard with Eight
-    case object S7 extends SpadeCard with Seven
-    case object S6 extends SpadeCard with Six
-    case object S5 extends SpadeCard with Five
-    case object S4 extends SpadeCard with Four
-    case object S3 extends SpadeCard with Three
-    case object S2 extends SpadeCard with Two
+  case object SA extends SpadeCard with Ace
+  case object SK extends SpadeCard with King
+  case object SQ extends SpadeCard with Queen
+  case object SJ extends SpadeCard with Jack
+  case object ST extends SpadeCard with Ten
+  case object S9 extends SpadeCard with Nine
+  case object S8 extends SpadeCard with Eight
+  case object S7 extends SpadeCard with Seven
+  case object S6 extends SpadeCard with Six
+  case object S5 extends SpadeCard with Five
+  case object S4 extends SpadeCard with Four
+  case object S3 extends SpadeCard with Three
+  case object S2 extends SpadeCard with Two
 
   sealed trait HeartCard extends Card with HeartSuit
   case object HA extends HeartCard with Ace
@@ -170,7 +164,6 @@ package object core {
           "H "+ hearts.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
           "D "+ diamonds.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
           "C "+ clubs.foldRight("")((a, b) => a.rankname+b)
-
   }
 
   case class Board(north:Hand, east:Hand, south:Hand, west:Hand) {
@@ -197,6 +190,5 @@ package object core {
       diamonds = List.empty[Card],
       clubs = List.empty[Card]
     )
-    //def unapply(h:Hand) = (h.spades, h.hearts, h.diamonds, h.clubs)
   }
 }

@@ -21,13 +21,16 @@ case class PointsLessThanAndEqualPredicate(mark:Int) extends Predicate {
    def eval(h:Hand):Boolean = h.points <= mark
 }
 case class SuitsLessThanAndEqualPredicate(mark:Int) extends Predicate {
-  def eval(hand:Hand):Boolean =
-    hand.spadeLength <= mark && hand.heartLength <= mark && hand.diamondLength<=mark && hand.clubLength <= mark
+  def eval(hand:Hand):Boolean = hand.spadeLength <= mark &&
+    hand.heartLength <= mark &&
+    hand.diamondLength<=mark &&
+    hand.clubLength <= mark
 }
 case class SuitsGreaterThanAndEqualPredicate(mark:Int) extends Predicate {
-  def eval(hand:Hand):Boolean = {
-    hand.spadeLength >= mark && hand.heartLength >= mark && hand.diamondLength >=mark && hand.clubLength >= mark
-  }
+  def eval(hand:Hand):Boolean = hand.spadeLength >= mark &&
+    hand.heartLength >= mark &&
+    hand.diamondLength >=mark &&
+    hand.clubLength >= mark
 }
 case class SpadeGreaterThanAndEqualPredicate(mark:Int) extends Predicate {
   def eval(hand: Hand): Boolean = hand.spadeLength >= mark
