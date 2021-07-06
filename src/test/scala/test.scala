@@ -1,5 +1,7 @@
-import core.OpenBid._
-import core.{Board, Deck, EmptyPredicate, Hand, PointsGreaterAndEqThanPredicate, PointsLessThanAndEqualPredicate, Shuffle}
+
+import dealer.{Board, PointsGreaterThan, Shuffle}
+import dealer.OpenBid._
+import predicate.Nope
 
 object test extends App {
 
@@ -27,7 +29,7 @@ object test extends App {
 //
 //  println(hand.show)
 
-  val b:Board = Shuffle.shuffle(OneMajorOpen,  EmptyPredicate(), PointsGreaterAndEqThanPredicate(6), EmptyPredicate())
+  val b:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
   b.north.println
   println
   b.south.println

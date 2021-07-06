@@ -1,6 +1,6 @@
-import core.HeartCard
+import dealer.HeartCard
 
-package object core {
+package object dealer {
   sealed trait Suit {
     def suitname:String
   }
@@ -154,29 +154,17 @@ package object core {
                   hearts:List[Card] = List.empty[HeartCard],
                   diamonds:List[Card] =  List.empty[DiamondCard],
                   clubs:List[Card] = List.empty[ClubCard]) {
-    def points = spades.map(_.points).sum + hearts.map(_.points).sum + diamonds.map(_.points).sum + clubs.map(_.points).sum
-    def spadeLength = spades.size
-    def heartLength = hearts.size
-    def diamondLength =  diamonds.size
-    def clubLength = clubs.size
+//    def points = spades.map(_.points).sum + hearts.map(_.points).sum + diamonds.map(_.points).sum + clubs.map(_.points).sum
+//    def spadeLength = spades.size
+//    def heartLength = hearts.size
+//    def diamondLength =  diamonds.size
+//    def clubLength = clubs.size
     def println = Console.println(show)
     def show = "S " + spades.foldRight("")((a, b) => a.rankname+b) + sys.props("line.separator") +
           "H "+ hearts.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
           "D "+ diamonds.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
           "C "+ clubs.foldRight("")((a, b) => a.rankname+b)
   }
-
-  case class Board(north:Hand, east:Hand, south:Hand, west:Hand) {
-    def show = north.show + sys.props("line.separator") +sys.props("line.separator")+
-      east.show + sys.props("line.separator") +sys.props("line.separator")+
-      south.show + sys.props("line.separator") +sys.props("line.separator")+
-      west.show + sys.props("line.separator")
-    def println =  Console.println(show)
-  }
-  object Board {
-    implicit def apply(x:(Hand, Hand, Hand, Hand)):Board =  Board(x._1, x._2, x._3, x._4)
-  }
-
   object Hand {
     def apply(cards:List[Card]):Hand = Hand (
       spades = cards.filter(_.suitname=="S").sortBy(_.ranking).reverse,
@@ -190,5 +178,28 @@ package object core {
       diamonds = List.empty[Card],
       clubs = List.empty[Card]
     )
+    def points(h:Hand)  = h.spades.map(_.points).sum + h.hearts.map(_.points).sum + h.diamonds.map(_.points).sum + h.clubs.map(_.points).sum
+    def spadeLength(h:Hand) = h.spades.size
+    def heartLength(h:Hand) = h.hearts.size
+    def diamondLength(h:Hand) =  h.diamonds.size
+    def clubLength(h:Hand) = h.clubs.size
+
+//    def show(h:Hand) = "S " + h.spades.foldRight("")((a, b) => a.rankname+b) + sys.props("line.separator") +
+//      "H "+ h.hearts.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
+//      "D "+ h.diamonds.foldRight("")((a, b) => a.rankname+b) +sys.props("line.separator") +
+//      "C "+ h.clubs.foldRight("")((a, b) => a.rankname+b)
   }
+
+  case class Board(north:Hand, east:Hand, south:Hand, west:Hand) {
+    def show = north.show + sys.props("line.separator") +sys.props("line.separator")+
+      east.show + sys.props("line.separator") +sys.props("line.separator")+
+      south.show + sys.props("line.separator") +sys.props("line.separator")+
+      west.show + sys.props("line.separator")
+    def println =  Console.println(show)
+  }
+  object Board {
+    implicit def apply(x:(Hand, Hand, Hand, Hand)):Board =  Board(x._1, x._2, x._3, x._4)
+  }
+
+
 }
