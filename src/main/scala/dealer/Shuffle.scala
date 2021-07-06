@@ -16,7 +16,7 @@ object Shuffle {
   def shuffle1(cards:List[Card], p:Predicate[Hand]):(Hand, List[Card]) = {
     val shuffled = scala.util.Random.shuffle(cards)
     val hand = Hand(shuffled.take(13))
-    if (p.eval(hand) ) {
+    if (p(hand) ) {
       (hand, shuffled.drop(13))
     } else shuffle1(cards, p)
   }
