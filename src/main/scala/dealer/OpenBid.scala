@@ -1,5 +1,7 @@
 package dealer
 
+import predicate.NotPredicate
+
 object OpenBid {
 //  val TwoNotrumpsOpen = PointsGreaterAndEqThanPredicate(20) and
 //    PointsLessThanAndEqualPredicate(21) and
@@ -13,6 +15,7 @@ object OpenBid {
     PointsLessThan(18) and
     SpadesGreaterThan(5)
 
+  val NotOneSpadeOpen =  OneSpadeOpen.not
 //  val TwoClubsOpen = PointsGreaterAndEqThanPredicate(22)
 //
 //  val OneNoTrumpOpen = PointsGreaterAndEqThanPredicate(15) and

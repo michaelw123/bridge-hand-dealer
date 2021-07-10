@@ -29,8 +29,13 @@ object test extends App {
 //
 //  println(hand.show)
 
-  val b:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
-  b.north.println
+//  val b:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
+//  b.north.println
+//  println
+//  b.south.println
+
+  val b1:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
+  b1.north.println
   println
-  b.south.println
+  b1.south.println
 }
