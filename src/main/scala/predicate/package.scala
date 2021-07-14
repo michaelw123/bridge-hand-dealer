@@ -1,5 +1,3 @@
-import predicate.Predicate
-
 package object predicate {
   trait Predicate[T] extends Function[T, Boolean]{
     def or(p2:Predicate[T]) = OrPredicate[T](this, p2)
@@ -27,5 +25,15 @@ package object predicate {
 
   class EqualTo[T](mark:Int, f: T => Int) extends Predicate[T] {
     def apply(a:T) = f(a) == mark
+  }
+
+  implicit class IntLessThan(mark:Int) extends Predicate[Int] {
+    def apply(a:Int) = a < mark
+  }
+  implicit class IntGreaterThan(mark:Int) extends Predicate[Int] {
+    def apply(a:Int) = a > mark
+  }
+  implicit class IntEqualTo(mark:Int) extends Predicate[Int] {
+    def apply(a:Int) = a == mark
   }
 }

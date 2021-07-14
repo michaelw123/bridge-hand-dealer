@@ -1,7 +1,7 @@
 
 import dealer.{Board, PointsGreaterThan, Shuffle}
 import dealer.OpenBid._
-import predicate.Nope
+import predicate.{IntLessThan, Nope, IntGreaterThan, IntEqualTo}
 
 object test extends App {
 
@@ -34,8 +34,13 @@ object test extends App {
 //  println
 //  b.south.println
 
-  val b1:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
-  b1.north.println
-  println
-  b1.south.println
+//  val b1:Board = Shuffle.shuffle(OneSpadeOpen,  Nope(), PointsGreaterThan(6), Nope())
+//  b1.north.println
+//  println
+//  b1.south.println
+
+  val l = List(1,2, 3,4,5,6,7,8,9,10)
+  val ll =   l.filter((IntLessThan(5) and IntGreaterThan(2)) or IntEqualTo(10))
+
+  ll.foreach(println)
 }
