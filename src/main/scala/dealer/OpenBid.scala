@@ -11,11 +11,11 @@ object OpenBid {
 //    PointsLessThanAndEqualPredicate(18) and
 //    HeartGreaterThanAndEqualPredicate(5)
 
-  val OneSpadeOpen = PointsGreaterThan(12) and
+  val OneSpadeOpen: predicate.AndPredicate[Hand] = PointsGreaterThan(12) and
     PointsLessThan(18) and
     SpadesGreaterThan(5)
 
-  val NotOneSpadeOpen =  OneSpadeOpen.not
+  val NotOneSpadeOpen =  !OneSpadeOpen
 //  val TwoClubsOpen = PointsGreaterAndEqThanPredicate(22)
 //
 //  val OneNoTrumpOpen = PointsGreaterAndEqThanPredicate(15) and

@@ -2,7 +2,7 @@ package object predicate {
   trait Predicate[T] extends Function[T, Boolean]{
     def or(p2:Predicate[T]) = OrPredicate[T](this, p2)
     def and(p2:Predicate[T]) =  AndPredicate[T](this, p2)
-    def not = NotPredicate[T](this)
+    def unary_! = NotPredicate[T](this)
   }
   case class Nope[T]() extends Predicate[T] {
     def apply(a:T) = true
